@@ -21,13 +21,8 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRentals(RentalDto newRental)
         {
-            if (newRental.MovieIds.Count() == 0)
-                return BadRequest("No Movie Ids have been given.");
 
             var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
-
-            if (customer == null)
-                return BadRequest("CustomerId is not valid");
 
             var movies = _context.Movies.Where(
                 m => newRental.MovieIds.Contains(m.Id)).ToList();
