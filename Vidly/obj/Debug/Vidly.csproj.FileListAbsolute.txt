@@ -390,3 +390,4 @@ C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Glimpse.Core.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Glimpse.EF6.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Glimpse.Mvc5.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.Migrations.AddRental.resources
+C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.Migrations.AddNumberAvailableToMovie.resources
