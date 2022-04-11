@@ -370,7 +370,6 @@ C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.csproj.AssemblyReference.cache
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.Migrations.InitialModel.resources
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.Migrations.AddIsSubscribedToCustomer.resources
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.Migrations.AddMembershipType.resources
