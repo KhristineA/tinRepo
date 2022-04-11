@@ -390,3 +390,5 @@ C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.csproj.CoreCompileInput
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.csproj.CopyComplete
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.pdb
+C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Elmah.dll
+C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.csproj.AssemblyReference.cache
