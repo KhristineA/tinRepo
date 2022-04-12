@@ -27,6 +27,7 @@
     </div>
 
     <button class="btn-primary">SUBMIT</button>
+    <input type="button" class="btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
 </form>
 @section scripts
 {
