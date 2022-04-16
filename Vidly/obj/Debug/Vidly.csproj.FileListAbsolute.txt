@@ -392,3 +392,5 @@ C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.pdb
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\bin\Elmah.dll
 C:\Users\Dell\Source\Repos\tinRepo\Vidly\obj\Debug\Vidly.csproj.AssemblyReference.cache
+C:\Users\Dell\source\repos\tinRepo\Vidly\bin\DataTables.Mvc.dll
+C:\Users\Dell\source\repos\tinRepo\Vidly\bin\System.Linq.Dynamic.dll

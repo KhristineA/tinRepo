@@ -1,7 +1,9 @@
-﻿using System;
+﻿using DataTables.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -96,6 +98,52 @@ namespace Vidly.Controllers
                 return HttpNotFound();
 
             return View(customer);
+        }
+
+        public ActionResult Get([ModelBinder(typeof(DataTablesBinder))] IDataTablesRequest requestModel)
+        {
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            var totalCount = customersQuery.Count();
+
+            //Filtering
+            if (requestModel.Search.Value != string.Empty)
+            {
+                var value = requestModel.Search.Value.Trim();
+                customersQuery = customersQuery.Where(c => c.Name.Contains(value));
+            }
+
+            var filteredCount = customersQuery.Count();
+
+            //Sorting
+            var sortedColumns = requestModel.Columns.GetSortedColumns();
+            var orderByString = String.Empty;
+
+            foreach (var column in sortedColumns)
+            {
+                orderByString += orderByString != String.Empty ? "," : "";
+                orderByString += (column.Data) +
+                  (column.SortDirection ==
+                  Column.OrderDirection.Ascendant ? " asc" : " desc");
+            }
+
+            customersQuery = customersQuery.OrderBy(orderByString ==
+                string.Empty ? "Name asc" : orderByString);
+
+            //Paging
+            customersQuery = customersQuery.Skip(requestModel.Start).Take(requestModel.Length);
+
+            var data = customersQuery.Select(customer => new
+            {
+                Name = customer.Name,
+                MembershipTypeId = customer.MembershipType.Name,
+                Id = customer.Id
+            }).ToList();
+
+            return Json(new DataTablesResponse
+            (requestModel.Draw, data, filteredCount, totalCount),
+                        JsonRequestBehavior.AllowGet);
         }
     }
 }

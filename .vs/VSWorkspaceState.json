@@ -3,8 +3,9 @@
     "",
     "\\Vidly",
     "\\Vidly\\Views",
+    "\\Vidly\\Views\\Customers",
     "\\Vidly\\Views\\Shared"
   ],
-  "SelectedNode": "\\Vidly\\Views\\Shared\\_NavBar.cshtml",
+  "SelectedNode": "\\Vidly\\Views\\Customers\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
