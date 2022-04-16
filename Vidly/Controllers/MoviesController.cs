@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DataTables.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
@@ -100,6 +102,58 @@ namespace Vidly.Controllers
                 return HttpNotFound();
 
             return View(movie);
+        }
+
+        public ActionResult Get([ModelBinder(typeof(DataTablesBinder))] IDataTablesRequest requestModel)
+        {
+            var moviesQuery = _context.Movies
+                .Include(m => m.Genre);
+
+            var totalCount = moviesQuery.Count();
+
+            #region Filtering
+            // Apply filters for searching
+            if (requestModel.Search.Value != string.Empty)
+            {
+                var value = requestModel.Search.Value.Trim();
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(value));
+            }
+
+            var filteredCount = moviesQuery.Count();
+
+            #endregion Filtering
+
+            #region Sorting
+            // Sorting
+            var sortedColumns = requestModel.Columns.GetSortedColumns();
+            var orderByString = String.Empty;
+
+            foreach (var column in sortedColumns)
+            {
+                orderByString += orderByString != String.Empty ? "," : "";
+                orderByString += (column.Data) +
+                  (column.SortDirection ==
+                  Column.OrderDirection.Ascendant ? " asc" : " desc");
+            }
+
+            moviesQuery = moviesQuery.OrderBy(orderByString ==
+                string.Empty ? "Name asc" : orderByString);
+
+            #endregion Sorting
+
+            // Paging
+            moviesQuery = moviesQuery.Skip(requestModel.Start).Take(requestModel.Length);
+
+            var data = moviesQuery.Select(movie => new
+            {
+                Name = movie.Name,
+                GenreId = movie.Genre.Name,
+                Id = movie.Id
+            }).ToList();
+
+            return Json(new DataTablesResponse
+            (requestModel.Draw, data, filteredCount, totalCount),
+                        JsonRequestBehavior.AllowGet);
         }
 
         #region "other"
