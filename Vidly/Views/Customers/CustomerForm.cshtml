@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Birthdate)
-        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @type = "date", @class = "form-control datepicker", @Value = Model.Customer.Birthdate?.ToString("yyyy-MM-dd") })
         @Html.ValidationMessageFor(m => m.Customer.Birthdate)
     </div>
     <div class="checkbox">
