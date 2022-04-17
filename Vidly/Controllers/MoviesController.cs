@@ -112,7 +112,6 @@ namespace Vidly.Controllers
 
             var totalCount = moviesQuery.Count();
 
-            #region Filtering
             // Apply filters for searching
             if (requestModel.Search.Value != string.Empty)
             {
@@ -122,9 +121,6 @@ namespace Vidly.Controllers
 
             var filteredCount = moviesQuery.Count();
 
-            #endregion Filtering
-
-            #region Sorting
             // Sorting
             var sortedColumns = requestModel.Columns.GetSortedColumns();
             var orderByString = String.Empty;
@@ -139,8 +135,6 @@ namespace Vidly.Controllers
 
             moviesQuery = moviesQuery.OrderBy(orderByString ==
                 string.Empty ? "Name asc" : orderByString);
-
-            #endregion Sorting
 
             // Paging
             moviesQuery = moviesQuery.Skip(requestModel.Start).Take(requestModel.Length);

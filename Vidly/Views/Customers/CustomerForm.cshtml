@@ -1,43 +1,48 @@
 ﻿@model Vidly.ViewModels.CustomerFormViewModel
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
-
-@using (Html.BeginForm("Save", "Customers"))
-{
-    @Html.ValidationSummary(true, "Please fix the following error/s.")
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Name)
-        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.Name)
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">Customer Form (@Model.Title)</h1>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Save", "Customers"))
+                {
+                    @Html.ValidationSummary(true, "Please fix the following error/s.")
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Customer.Name)
+                        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Customer.Name)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Customer.Birthdate)
+                        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @type = "date", @class = "form-control datepicker", @Value = Model.Customer.Birthdate?.ToString("yyyy-MM-dd") })
+                        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newsletter
+                        </label>
+                    </div>
+                    @Html.HiddenFor(c => c.Customer.Id)
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <input type="button" class="btn btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Customers") + "'");" />
+                }
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Birthdate)
-        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @type = "date", @class = "form-control datepicker", @Value = Model.Customer.Birthdate?.ToString("yyyy-MM-dd") })
-        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
-    </div>
-    <div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newsletter
-        </label>
-    </div>
-    @Html.HiddenFor(m => m.Customer.Id)
-    @Html.AntiForgeryToken()
-    <button type="submit" class="btn btn-primary">Save</button>
-    <input type="button" class="btn btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Customers") + "'");" />
-}
-
-
-
-
+</div>
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")

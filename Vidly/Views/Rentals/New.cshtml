@@ -4,123 +4,170 @@
 }
 
 <h2>New Rental Form</h2>
+<div class="row">
+    <div class="col-md-6">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    <h1 class="panel-title list-panel-title">Rental Form</h1>
+                </div>
+                <div class="panel-body">
+                    <form id="newRental">
+                        <div class="form-group">
+                            <label>Customer</label>
+                            <div class="tt-container">
+                                <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
+                            </div>
+                        </div>
 
-<form id="newRental">
-    <div class="form-group">
-        <label>Customer</label>
-        <div class="tt-container">
-            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
+                        <div class="form-group">
+                            <label>Movie</label>
+                            <div class="tt-container">
+                                <input id="movie" name="movie" data-rule-atLeastOneMovie="true" type="text" value="" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <ul id="movies" class="list-group"></ul>
+                            </div>
+                        </div>
+
+                        <button class="btn-primary">SUBMIT</button>
+                        <input type="button" class="btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Rentals") + "'");" />
+                    </form>
+                </div>
         </div>
     </div>
-
-    <div class="form-group">
-        <label>Movie</label>
-        <div class="tt-container">
-            <input id="movie" name="movie" data-rule-atLeastOneMovie="true" type="text" value="" class="form-control" />
+    <div class="col-md-6">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">Available  Movies</h1>
+            </div>
+            <div class="panel-body">
+                <table id="availableMovies" class="table table-bordered table hover">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Genre</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <ul id="movies" class="list-group"></ul>
-        </div>
-    </div>
-
-    <button class="btn-primary">SUBMIT</button>
-    <input type="button" class="btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Rentals") + "'");" />
-</form>
-@section scripts
+</div>
+        @section scripts
 {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script>
+                $(document).ready(function () {
 
-            var vm = {
-                movieIds: []
-            };
+                    var vm = {
+                        movieIds: []
+                    };
 
-            var customers = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: '/api/customers?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
+                    var customers = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        remote: {
+                            url: '/api/customers?query=%QUERY',
+                            wildcard: '%QUERY'
+                        }
+                    });
 
-            $('#customer').typeahead({
-                minLength: 3,
-                highlight: true
-            }, {
-                name: 'customers',
-                display: 'name',
-                source: customers
-            }).on("typeahead:select", function (e, customer) {
-                vm.customerId = customer.id;
-            });
+                    $('#customer').typeahead({
+                        minLength: 3,
+                        highlight: true
+                    }, {
+                        name: 'customers',
+                        display: 'name',
+                        source: customers
+                    }).on("typeahead:select", function (e, customer) {
+                        vm.customerId = customer.id;
+                    });
 
-            var movies = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: '/api/movies?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
+                    var movies = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        remote: {
+                            url: '/api/movies?query=%QUERY',
+                            wildcard: '%QUERY'
+                        }
+                    });
 
-            $('#movie').typeahead({
-                minLength: 3,
-                highlight: true
-            }, {
-                name: 'movies',
-                display: 'name',
-                source: movies
-            }).on("typeahead:select", function (e, movie) {
+                    $('#movie').typeahead({
+                        minLength: 3,
+                        highlight: true
+                    }, {
+                        name: 'movies',
+                        display: 'name',
+                        source: movies
+                    }).on("typeahead:select", function (e, movie) {
 
-                if (!vm.movieIds.includes(movie.id)) {
-                    //$("#movies").append("<li class='list-group-item'>" + movie.name + "<button type='button' class='btn btn-primary pull-right' style='padding: 2px' onclick='$(this).closest('li').remove(); alert('test');'>X</button> </li>");
-                    $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
-                    vm.movieIds.push(movie.id);
-                }
+                        if (!vm.movieIds.includes(movie.id)) {
+                            //$("#movies").append("<li class='list-group-item'>" + movie.name + "<button type='button' class='btn btn-primary pull-right' style='padding: 2px' onclick='$(this).closest('li').remove(); alert('test');'>X</button> </li>");
+                            $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+                            vm.movieIds.push(movie.id);
+                        }
 
-                $("#movie").typeahead("val", "");
-                
-            });
+                        $("#movie").typeahead("val", "");
 
-            $.validator.addMethod("validCustomer", function () {
-                return vm.customerId && vm.customerId !== 0;
-            }, "Please select a valid customer");
+                    });
 
-            $.validator.addMethod("atLeastOneMovie", function () {
-                return vm.movieIds.length > 0;
-            }, "Please select at least one movie.");
+                    $.validator.addMethod("validCustomer", function () {
+                        return vm.customerId && vm.customerId !== 0;
+                    }, "Please select a valid customer");
 
-            $("#newRental").validate({
-                submitHandler: function () {
-                    $.ajax({
-                        url: "/api/newRentals",
-                        method: "post",
-                        data: vm
-                    })
-                        .done(function () {
-                            toastr.options.positionClass = 'toast-bottom-right';
-                            toastr.success("Rentals successfully recorded.");
+                    $.validator.addMethod("atLeastOneMovie", function () {
+                        return vm.movieIds.length > 0;
+                    }, "Please select at least one movie.");
 
-                            $("#customer").typeahead("val", "");
-                            $("#movie").typeahead("val", "");
-                            $("#movies").empty();
-                            vm = { movieIds: [] };
-                            validator.resetForm();
-                        })
-                        .fail(function () {
-                            toastr.error("Something unexpected happened.");
-                        });
+                    var validator = $("#newRental").validate({
+                        submitHandler: function () {
+                            $.ajax({
+                                url: "/api/newRentals",
+                                method: "post",
+                                data: vm
+                            })
+                                .done(function () {
+                                    $("#customer").typeahead("val", "");
+                                    $("#movie").typeahead("val", "");
+                                    $("#movies").empty();
+                                    vm = { movieIds: [] };
+                                    validator.resetForm();
+                                    $('#availableMovies').DataTable().ajax.reload();
+                                    toastr.options.positionClass = 'toast-bottom-right';
+                                    toastr.success("Rentals successfully recorded.");
+                                })
+                                .fail(function () {
+                                    toastr.error("Something unexpected happened.");
+                                });
 
-                    return false;
-                }
-            });
+                            return false;
+                        }
+                    });
 
-            
-        });
-    </script>
-}
+                    //movie table
+                    $("#availableMovies").DataTable({
+                        ajax: {
+                            url: "/api/movies",
+                            dataSrc: ""
+                        },
+                        columns: [
+                            {
+                                data: "name"
+                            },
+                            {
+                                data: "genre.name"
+                            },
+                            {
+                                data: "numberAvailable"
+                            }
+                        ]
+                    });
+                });
+            </script>
+        }
