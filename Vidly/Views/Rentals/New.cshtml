@@ -27,7 +27,7 @@
     </div>
 
     <button class="btn-primary">SUBMIT</button>
-    <input type="button" class="btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");" />
+    <input type="button" class="btn-primary" value="Cancel" onclick="@("window.location.href='" + @Url.Action("Index", "Rentals") + "'");" />
 </form>
 @section scripts
 {
@@ -76,11 +76,15 @@
                 display: 'name',
                 source: movies
             }).on("typeahead:select", function (e, movie) {
-                $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+
+                if (!vm.movieIds.includes(movie.id)) {
+                    //$("#movies").append("<li class='list-group-item'>" + movie.name + "<button type='button' class='btn btn-primary pull-right' style='padding: 2px' onclick='$(this).closest('li').remove(); alert('test');'>X</button> </li>");
+                    $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+                    vm.movieIds.push(movie.id);
+                }
 
                 $("#movie").typeahead("val", "");
-
-                vm.movieIds.push(movie.id);
+                
             });
 
             $.validator.addMethod("validCustomer", function () {
@@ -99,6 +103,7 @@
                         data: vm
                     })
                         .done(function () {
+                            toastr.options.positionClass = 'toast-bottom-right';
                             toastr.success("Rentals successfully recorded.");
 
                             $("#customer").typeahead("val", "");
@@ -114,6 +119,8 @@
                     return false;
                 }
             });
+
+            
         });
     </script>
 }
