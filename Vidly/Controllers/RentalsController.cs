@@ -37,7 +37,6 @@ namespace Vidly.Controllers
 
             var totalCount = rentalQuery.Count();
 
-            #region Filtering
             // Apply filters for searching
             if (requestModel.Search.Value != string.Empty)
             {
@@ -47,24 +46,7 @@ namespace Vidly.Controllers
 
             var filteredCount = rentalQuery.Count();
 
-            #endregion Filtering
-
-            #region Sorting
-            // Sorting
-            //var sortedColumns = requestModel.Columns.GetSortedColumns();
-            //var orderByString = String.Empty;
-
-            //foreach (var column in sortedColumns)
-            //{
-            //    orderByString += orderByString != String.Empty ? "," : "";
-            //    orderByString += (column.Data) +
-            //      (column.SortDirection ==
-            //      Column.OrderDirection.Ascendant ? " asc" : " desc");
-            //}
-
             rentalQuery = rentalQuery.OrderBy(r => r.Customer.Name);
-
-            #endregion Sorting
 
             // Paging
             rentalQuery = rentalQuery.Skip(requestModel.Start).Take(requestModel.Length);

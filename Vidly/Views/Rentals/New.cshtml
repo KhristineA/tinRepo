@@ -3,7 +3,6 @@
     ViewBag.Title = "New Rental Form";
 }
 
-<h2>New Rental Form</h2>
 <div class="row">
     <div class="col-md-6">
             <div class="panel panel-primary list-panel" id="list-panel">
@@ -77,9 +76,14 @@
                             wildcard: '%QUERY'
                         }
                     });
-
+                    //function close() {
+                    //    debugger
+                    //    this.parentElement.style.display = 'none';
+                    //    var newArray = vm.movieIds.filter(item => item != this.id);
+                    //    vm.movieIds = newArray;
+                    //}
                     $('#customer').typeahead({
-                        minLength: 3,
+                        minLength: 2,
                         highlight: true
                     }, {
                         name: 'customers',
@@ -99,7 +103,7 @@
                     });
 
                     $('#movie').typeahead({
-                        minLength: 3,
+                        minLength: 2,
                         highlight: true
                     }, {
                         name: 'movies',
@@ -107,14 +111,24 @@
                         source: movies
                     }).on("typeahead:select", function (e, movie) {
 
+                        $("#movie").typeahead("val", "");
+
+                        if (vm.movieIds.length >= 3) {
+                            toastr.options.positionClass = 'toast-bottom-right';
+                            toastr.error("Only three movies are allowed to be rented.");
+                            return;
+                        };
+
                         if (!vm.movieIds.includes(movie.id)) {
                             //$("#movies").append("<li class='list-group-item'>" + movie.name + "<button type='button' class='btn btn-primary pull-right' style='padding: 2px' onclick='$(this).closest('li').remove(); alert('test');'>X</button> </li>");
                             $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
+                            //$("#movies").append("<li class='list-group-item'>" + movie.name + "<span class='close' id='" + movie.id +"' style='color: blue'>x</span></li>");
+                            //$('span').click(close);
                             vm.movieIds.push(movie.id);
-                        }
-
-                        $("#movie").typeahead("val", "");
-
+                        } else {
+                            toastr.options.positionClass = 'toast-bottom-right';
+                            toastr.error("Movie " + movie.name + " is already on the list.");
+                        };
                     });
 
                     $.validator.addMethod("validCustomer", function () {
@@ -169,5 +183,7 @@
                         ]
                     });
                 });
+
+
             </script>
         }
