@@ -1,0 +1,103 @@
+﻿@model IList<Vidly.ViewModels.RentalFormViewModel>
+@{
+    ViewBag.Title = "RentalForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">Rental Detail</h1>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Save", "Rentals", FormMethod.Post))
+                {
+                <div class="form-group">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Movie</th>
+                                <th>Date Returned</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(r => r[i].MovieName)
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(r => r[i].DateReturned, new { @type = "date", @class = "form-control datepicker", @Value = Model[i].DateReturned?.ToString("yyyy-MM-dd") })
+                                    </td>
+                                    @Html.HiddenFor(r => r[i].CustomerName)
+                                    @Html.HiddenFor(r => r[i].Id)
+                                    @Html.HiddenFor(r => r[i].MovieId)
+                                    @Html.HiddenFor(r => r[i].MovieName)
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    @*@Html.ActionLink("Save", "Save", "Rentals", new { model = Json.Encode(Model) }, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Cancel", "Index", "Rentals", new { @class = "btn btn-primary" })
+                </div>
+                }
+                    </div>
+                </div>
+    </div>
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*@section scripts
+    {
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                function myfunction() {
+                    debugger
+                    var modelData = @Html.Raw(Json.Encode(Model));
+                    for (var i = 0; i < modelData.length; i++) {
+                    debugger
+                        var t = $("#datepicker" + modelData[i].Id).val();
+                        alert(t);
+                    };
+                }
+
+            //var rentalListVM;
+            //$(function () {
+            //    rentalListVM = {
+            //        dt: null,
+
+            //        init: function () {
+            //            dt = $('#rentals-data-table').DataTable({
+            //                "columns": [
+            //                    {
+            //                        "title": "MovieName",
+            //                        "data": "MovieName"
+            //                    },
+            //                    {
+            //                    "title": "Date returned",
+            //                        "data": "DateReturned"
+            //                        //"type": "date",
+            //                        //"def": function () { return new Date(); },
+            //                        //"dateFormat": $.datepicker.ISO_8601
+            //                    }
+            //                ],
+            //                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+            //            });
+            //        }
+            //    }
+
+            //    // initialize the datatables
+            //    rentalListVM.init();
+            //});
+        });
+        </script>
+    }*@

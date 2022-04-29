@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[RentDetail] (Table)
+       [dbo].[RentHeader] (Table)
+       [dbo].[FK_dbo.RentDetails_dbo.RentHeader_RentId] (Foreign Key)
+       [dbo].[FK_dbo.RentDetails_dbo.Movies_MovieId] (Foreign Key)
+       [dbo].[FK_dbo.RentHeader_dbo.Customers_CustomerId] (Foreign Key)
+
+** Supporting actions

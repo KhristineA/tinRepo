@@ -72,6 +72,15 @@
                             success: function () {
                                 //table.row(button.parents("tr")).remove().draw();
                                 button.parents("tr").remove();
+                            },
+                            error: function (xhr) {
+                                toastr.options.positionClass = 'toast-bottom-right';
+                                if (xhr.status == 404) {
+                                    toastr.error("Customer is already not available.");
+                                } else {
+                                    toastr.error(xhr.responseJSON.message);
+                                }
+                                
                             }
                         });
                     }

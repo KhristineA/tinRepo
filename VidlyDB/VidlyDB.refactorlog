@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="117a457a-618c-4a2e-887f-7ce59bf1b1a1" ChangeDateTime="04/23/2022 15:28:57">
+    <Property Name="ElementName" Value="[dbo].[RentalHeader]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[RentalHeaders]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bede3d72-695f-4add-b3c1-255c2c900a0b" ChangeDateTime="04/23/2022 15:59:24">
+    <Property Name="ElementName" Value="[dbo].[RentalHeaders].[RentalId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RentalHeaders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="620ea126-e8c1-4f80-ac52-d1b1ad154261" ChangeDateTime="04/23/2022 16:10:58">
+    <Property Name="ElementName" Value="[dbo].[RentHeader].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RentHeader]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RentId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bb6d1ccd-28f4-44bc-80e6-e3c1c996668b" ChangeDateTime="04/23/2022 17:06:32">
+    <Property Name="ElementName" Value="[dbo].[RentHeader]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[RentHeaders]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f1fda7b3-9e4d-4267-8448-ff238ec24c90" ChangeDateTime="04/23/2022 17:16:37">
+    <Property Name="ElementName" Value="[dbo].[RentHeaders].[CustomerId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RentHeaders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Customer_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3449b997-067f-489c-bec4-1e20ff1ade00" ChangeDateTime="04/23/2022 17:18:57">
+    <Property Name="ElementName" Value="[dbo].[RentDetail]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[RentDetails]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5265b2b6-f8e9-476f-b42b-9770998364da" ChangeDateTime="04/23/2022 17:19:09">
+    <Property Name="ElementName" Value="[dbo].[RentDetails].[MovieId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RentDetails]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Movie_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="20ef0225-aa41-4dd5-8164-4cd47a7037a1" ChangeDateTime="04/25/2022 09:47:02">
+    <Property Name="ElementName" Value="[dbo].[Customers].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Customers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CustomerName" />
+  </Operation>
+</Operations>

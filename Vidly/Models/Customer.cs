@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,7 @@ namespace Vidly.Models
 
         [Required(ErrorMessage = "Please enter customer's name.")]
         [StringLength(255)]
+        [Column("CustomerName")]
         public string Name { get; set; }
 
         public bool IsSubscribedToNewsletter { get; set; }

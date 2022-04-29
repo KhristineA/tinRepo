@@ -87,9 +87,13 @@ namespace Vidly.Controllers.Api
         public IHttpActionResult DeleteMovie(int id)
         { 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
-
             if (movieInDb == null)
                 return NotFound();
+
+            //var movieInRent = _context.RentHeaders.Include(r => r.RentDetail).Where(r => r.RentId == id).ToList();
+            
+            //if (movieInRent != null)
+            //    return BadRequest();
 
             _context.Movies.Remove(movieInDb);
             _context.SaveChanges();

@@ -86,9 +86,12 @@ namespace Vidly.Controllers.Api
         public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
-
             if (customerInDb == null)
                 return NotFound();
+
+            var customerInRent = _context.RentDetails.Where(r => r.RentId == id && r.DateReturned == null);
+            if (customerInRent != null)
+                return BadRequest("Cannot delete - Customer has a rental record.");
 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();

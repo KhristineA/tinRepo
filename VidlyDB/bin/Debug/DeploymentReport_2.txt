@@ -1,0 +1,37 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[RentalDetails]
+       [dbo].[RentalHeader]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[RentalDetails].[Rent_Id] is being dropped, data loss could occur.
+       The column [dbo].[RentalDetails].[RentalId] on table [dbo].[RentalDetails] must be added, but the column has no default
+         value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue
+         you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of
+         smart-defaults as a deployment option.
+       The column [dbo].[RentalHeader].[Id] is being dropped, data loss could occur.
+
+** User actions
+     Drop
+       [dbo].[FK_dbo.RentalDetails_dbo.RentalHeader_Rent_Id] (Foreign Key)
+     Table rebuild
+       [dbo].[RentalDetails] (Table)
+       [dbo].[RentalHeader] (Table)
+     Create
+       [dbo].[FK_dbo.RentalDetails_dbo.RentalHeader_Rent_Id] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_dbo.RentalDetails_dbo.Movies_Movie_Id] (Foreign Key)
+       [dbo].[FK_dbo.RentalHeader_dbo.Customers_Customer_Id] (Foreign Key)
+     Create
+       [dbo].[FK_dbo.RentalDetails_dbo.Movies_Movie_Id] (Foreign Key)
+       [dbo].[FK_dbo.RentalHeader_dbo.Customers_Customer_Id] (Foreign Key)
+
+The column [dbo].[RentalDetails].[Rent_Id] is being dropped, data loss could occur.
+The column [dbo].[RentalDetails].[RentalId] on table [dbo].[RentalDetails] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[RentalHeader].[Id] is being dropped, data loss could occur.
+

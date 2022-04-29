@@ -9,7 +9,6 @@
         <div class="panel panel-primary list-panel" id="list-panel">
             <div class="panel-heading list-panel-heading">
                 <h1 class="panel-title list-panel-title">Rentals @Html.ActionLink("New Rental", "New", "Rentals", new { @class = "btn btn-primary pull-right" }) </h1>
-                
             </div>
             <div class="panel-body">
                 <table id="rentals-data-table" class="table table-striped table-bordered"
@@ -34,16 +33,32 @@
                         "processing": true,
                         "ajax": {
                             "url":
-                            "@Url.Action("Get","Rentals")"
+                            @*"@Url.Action("Get","Rentals")"*@
+                            "@Url.Action("GetDetails","Rentals")"
                         },
                         "columns": [
                             {
-                            "title": "Customer",
-                            "data": "Customer_Id",
-                            "searchable": true },
+                                "title": "Transaction No.",
+                                "data": "RentId",
+                                "render": function (data, type, rental) {
+                                    return "<a href='/rentals/edit/" + rental.RentId + "'>" + rental.RentId + "</a>";
+                                },
+                                "searchable": true
+                            },
                             {
-                            "title": "Movie",
-                            "data": "Movie_Id"
+                            "title": "Customer",
+                                "data": "CustomerName",
+                                "searchable": true
+                            },
+                            {
+                                "title": "Date Rented",
+                                "data": "DateRented",
+                                "render": function (data, type, rental) {
+                                    var date = new Date(parseInt(rental.DateRented.substr(6)))
+                                    //return date;
+                                    var month = date.getMonth() + 1;
+                                    return (month.toString().length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
+                                }
                             }
                         ],
                         "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],

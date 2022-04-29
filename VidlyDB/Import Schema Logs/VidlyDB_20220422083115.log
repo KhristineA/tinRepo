@@ -1,0 +1,87 @@
+22/04/2022 4:31:15 pm	This log contains information about the import schema operation into project 'VidlyDB' on computer 'DESKTOP-7UB80FR' by user 'Dell'.
+22/04/2022 4:31:15 pm	Import of database schema has started.
+22/04/2022 4:31:21 pm	Gathering database credentials
+22/04/2022 4:31:21 pm	Gathering database options
+22/04/2022 4:31:21 pm	Gathering generic database scoped configuration option
+22/04/2022 4:31:21 pm	Gathering users
+22/04/2022 4:31:21 pm	Gathering roles
+22/04/2022 4:31:21 pm	Gathering application roles
+22/04/2022 4:31:21 pm	Gathering role memberships
+22/04/2022 4:31:21 pm	Gathering filegroups
+22/04/2022 4:31:21 pm	Gathering full-text catalogs
+22/04/2022 4:31:21 pm	Gathering assemblies
+22/04/2022 4:31:21 pm	Gathering certificates
+22/04/2022 4:31:21 pm	Gathering asymmetric keys
+22/04/2022 4:31:21 pm	Gathering symmetric keys
+22/04/2022 4:31:21 pm	Gathering encrypted symmetric keys
+22/04/2022 4:31:21 pm	Gathering schemas
+22/04/2022 4:31:21 pm	Gathering XML schema collections
+22/04/2022 4:31:21 pm	Gathering user-defined data types
+22/04/2022 4:31:21 pm	Gathering user-defined types
+22/04/2022 4:31:21 pm	Gathering table types
+22/04/2022 4:31:21 pm	Gathering unique keys for table types
+22/04/2022 4:31:21 pm	Gathering primary keys for table types
+22/04/2022 4:31:21 pm	Gathering indexes for table types
+22/04/2022 4:31:47 pm	Gathering check constraints for table types
+22/04/2022 4:31:47 pm	Gathering default constraints for table types
+22/04/2022 4:31:47 pm	Gathering partition functions
+22/04/2022 4:31:47 pm	Gathering partition schemes
+22/04/2022 4:31:47 pm	Gathering functions
+22/04/2022 4:31:47 pm	Gathering encrypted functions
+22/04/2022 4:31:47 pm	Gathering aggregates
+22/04/2022 4:31:47 pm	Gathering procedures
+22/04/2022 4:31:57 pm	Gathering encrypted procedures
+22/04/2022 4:31:57 pm	Gathering tables
+22/04/2022 4:31:57 pm	Gathering primary keys
+22/04/2022 4:31:57 pm	Gathering unique constraints
+22/04/2022 4:31:57 pm	Gathering foreign keys
+22/04/2022 4:31:57 pm	Gathering default constraints
+22/04/2022 4:31:57 pm	Gathering check constraints
+22/04/2022 4:31:57 pm	Gathering views
+22/04/2022 4:31:57 pm	Gathering encrypted views
+22/04/2022 4:31:57 pm	Gathering indexes
+22/04/2022 4:31:57 pm	Gathering statistics
+22/04/2022 4:31:57 pm	Gathering full-text index stoplists
+22/04/2022 4:31:57 pm	Gathering search property lists
+22/04/2022 4:31:57 pm	Gathering search properties
+22/04/2022 4:31:57 pm	Gathering full-text indexes
+22/04/2022 4:31:57 pm	Gathering column store indexes
+22/04/2022 4:31:57 pm	Gathering spatial indexes
+22/04/2022 4:31:58 pm	Gathering XML indexes
+22/04/2022 4:31:58 pm	Gathering Selective XML indexes
+22/04/2022 4:31:58 pm	Gathering encrypted triggers
+22/04/2022 4:31:58 pm	Gathering triggers
+22/04/2022 4:31:58 pm	Gathering encrypted and clr ddl triggers
+22/04/2022 4:31:58 pm	Gathering ddl triggers
+22/04/2022 4:31:58 pm	Creating edge constraints
+22/04/2022 4:31:58 pm	Gathering synonyms
+22/04/2022 4:31:58 pm	Gathering defaults
+22/04/2022 4:31:58 pm	Gathering data constraint uddt bindings
+22/04/2022 4:31:58 pm	Gathering rules
+22/04/2022 4:31:58 pm	Gathering data constraint uddt bindings
+22/04/2022 4:31:58 pm	Gathering message types
+22/04/2022 4:31:58 pm	Gathering queues
+22/04/2022 4:31:58 pm	Gathering contracts
+22/04/2022 4:31:58 pm	Gathering services
+22/04/2022 4:31:58 pm	Gathering event notifications
+22/04/2022 4:31:58 pm	Gathering remote service bindings
+22/04/2022 4:31:58 pm	Gathering broker priorities
+22/04/2022 4:31:58 pm	Gathering signatures
+22/04/2022 4:31:58 pm	Gathering data compression options
+22/04/2022 4:31:58 pm	Gathering sequence types
+22/04/2022 4:31:58 pm	Gathering security policies
+22/04/2022 4:31:58 pm	Gather column encryption keys
+22/04/2022 4:31:58 pm	Gathering column master keys
+22/04/2022 4:31:58 pm	Gathering external data sources
+22/04/2022 4:31:58 pm	Gathering external file formats
+22/04/2022 4:31:58 pm	Gathering external tables
+22/04/2022 4:31:58 pm	Gathering extended properties
+22/04/2022 4:31:58 pm	Gathering assemblies
+22/04/2022 4:31:58 pm	Gathering credentials
+22/04/2022 4:31:58 pm	Gathering logins
+22/04/2022 4:31:58 pm	Gathering server audits
+22/04/2022 4:31:58 pm	Scanning project for duplicate elements
+22/04/2022 4:31:59 pm	Finished duplicate element processing
+22/04/2022 4:31:59 pm	Finished importing database.
+22/04/2022 4:31:59 pm	A summary of the import was saved to the following location: C:\Users\Dell\source\repos\tinRepo\VidlyDB\Import Schema Logs\VidlyDB_20220422083115.log
+22/04/2022 4:31:59 pm	Click Finish to continue...
