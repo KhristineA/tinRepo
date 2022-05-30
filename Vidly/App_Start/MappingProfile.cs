@@ -19,6 +19,10 @@ namespace Vidly.App_Start
             Mapper.CreateMap<Genre, GenreDto>();
             Mapper.CreateMap<Rental, RentalDto>();
             Mapper.CreateMap<RentHeader, RentalDto>();
+            Mapper.CreateMap<Rent2Header, RentalDto>();
+            Mapper.CreateMap<RentHeader, RentalHeaderDto>();
+            Mapper.CreateMap<RentDetail, RentalDetailDto>();
+            Mapper.CreateMap<RentalDetailDto, RentDetail>();
 
             //Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>()

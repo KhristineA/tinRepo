@@ -1,10 +1,11 @@
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\bin\Debug\VidlyDB.dacpac
+C:\Users\Dell\source\repos\tinRepo\VidlyDB\bin\Debug\Scripts\PreDeployment.sql
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\bin\Debug\VidlyDB.dll
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\bin\Debug\VidlyDB.pdb
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\VidlyDB.dll
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\VidlyDB.pdb
-C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\VidlyDB.sqlproj.AssemblyReference.cache
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\Model.xml
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\refactor.xml
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\postdeploy.sql
 C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\predeploy.sql
+C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\VidlyDB.sqlproj.AssemblyReference.cache

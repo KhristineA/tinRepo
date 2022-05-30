@@ -22,7 +22,9 @@
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
 			<Metadata Name="AssemblySymbolsName" Value="C:\Users\Dell\source\repos\tinRepo\VidlyDB\obj\Debug\VidlyDB.pdb" />
 		</CustomData>
-		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable">
+			<Metadata Name="Release" Value="" />
+		</CustomData>
 	</Header>
 	<Model>
 		<Element Type="SqlDatabaseOptions">
@@ -46,16 +48,16 @@
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[((0))]]></Value>
+				<Value><![CDATA[('')]]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Movies]" />
+					<References Name="[dbo].[AspNetUsers]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[Movies].[NumberAvailable]" />
+					<References Name="[dbo].[AspNetUsers].[DrivingLicense]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
@@ -71,23 +73,23 @@
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[AspNetUsers].[DrivingLicense]" />
+					<References Name="[dbo].[AspNetUsers].[Phone]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[('')]]></Value>
+				<Value><![CDATA[((0))]]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[AspNetUsers]" />
+					<References Name="[dbo].[Movies]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[AspNetUsers].[Phone]" />
+					<References Name="[dbo].[Movies].[NumberAvailable]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
@@ -738,7 +740,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="3" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -756,7 +758,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -880,6 +882,24 @@
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+		</Element>
+		<Element Type="SqlIndex" Name="[dbo].[Customers].[IX_Customers_Id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Customers].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[Customers]" />
+				</Entry>
+			</Relationship>
 		</Element>
 		<Element Type="SqlIndex" Name="[dbo].[Customers].[IX_MembershipTypeId]">
 			<Relationship Name="ColumnSpecifications">
@@ -1419,7 +1439,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="5" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1438,6 +1458,24 @@
 						<Relationship Name="Column">
 							<Entry>
 								<References Name="[dbo].[Movies].[GenreId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[Movies]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlIndex" Name="[dbo].[Movies].[IX_Movies_Id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Movies].[Id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1815,6 +1853,38 @@
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Rentals].[FirstName]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Rentals].[LastName]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
@@ -1938,6 +2008,42 @@
 			<AttachedAnnotation Disambiguator="24" />
 			<AttachedAnnotation Disambiguator="23" />
 		</Element>
+		<Element Type="SqlIndex" Name="[dbo].[RentDetails].[IX_RentDetails_Id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[RentDetails].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[RentDetails]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlIndex" Name="[dbo].[RentDetails].[IX_RentDetails_Movie_Id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[RentDetails].[Movie_Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[RentDetails]" />
+				</Entry>
+			</Relationship>
+		</Element>
 		<Element Type="SqlIndex" Name="[dbo].[RentDetails].[IX_RentDetails_RentId]">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -2016,6 +2122,24 @@
 				</Entry>
 			</Relationship>
 			<AttachedAnnotation Disambiguator="25" />
+		</Element>
+		<Element Type="SqlIndex" Name="[dbo].[RentHeaders].[IX_RentHeaders_Customer_Id]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[RentHeaders].[Customer_Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="IndexedObject">
+				<Entry>
+					<References Name="[dbo].[RentHeaders]" />
+				</Entry>
+			</Relationship>
 		</Element>
 		<Element Type="SqlIndex" Name="[dbo].[RentHeaders].[IX_RentHeaders_RentId]">
 			<Relationship Name="ColumnSpecifications">

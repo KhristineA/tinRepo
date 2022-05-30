@@ -11,3 +11,7 @@
 GO
 
 CREATE INDEX [IX_RentHeaders_RentId] ON [dbo].[RentHeaders] ([RentId])
+
+GO
+
+CREATE INDEX [IX_RentHeaders_Customer_Id] ON [dbo].[RentHeaders] ([Customer_Id])

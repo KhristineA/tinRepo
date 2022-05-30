@@ -61,7 +61,7 @@
         @section scripts
 {
             @Scripts.Render("~/bundles/jqueryval")
-            <script>
+<script>
                 $(document).ready(function () {
 
                     var vm = {
@@ -76,7 +76,7 @@
                             wildcard: '%QUERY'
                         }
                     });
-                    
+
                     $('#customer').typeahead({
                         minLength: 2,
                         highlight: true
@@ -160,25 +160,47 @@
                     });
 
                     //movie table
-                    $("#availableMovies").DataTable({
-                        ajax: {
-                            url: "/api/movies",
-                            dataSrc: ""
+                    //$("#availableMovies").DataTable({
+                    //    ajax: {
+                    //        url: "/api/movies",
+                    //        dataSrc: ""
+                    //    },
+                    //    columns: [
+                    //        {
+                    //            data: "name"
+                    //        },
+                    //        {
+                    //            data: "genre.name"
+                    //        },
+                    //        {
+                    //            data: "numberAvailable"
+                    //        }
+                    //    ]
+                    //});
+                    $('#availableMovies').DataTable({
+                        "serverSide": true,
+                        "processing": true,
+                        "ajax": {
+                            "url":
+                            "@Url.Action("Get","Movies")"
                         },
-                        columns: [
+                        "columns": [
+                            { "title": "Movie Name",
+                            "data": "Name",
+                            "searchable": true },
                             {
-                                data: "name"
+                                "title": "Genre Name",
+                                "data": "GenreId"
                             },
                             {
-                                data: "genre.name"
-                            },
-                            {
-                                data: "numberAvailable"
+                                "title": "Number Available",
+                                "data": "NumberAvailable"
                             }
-                        ]
+                        ],
+                        "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                     });
                 });
 
 
-            </script>
+</script>
         }

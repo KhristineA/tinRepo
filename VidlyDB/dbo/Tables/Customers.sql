@@ -13,3 +13,9 @@ GO
 CREATE NONCLUSTERED INDEX [IX_MembershipTypeId]
     ON [dbo].[Customers]([MembershipTypeId] ASC);
 
+
+GO
+
+CREATE INDEX [IX_Customers_Id] ON [dbo].[Customers] ([Id])
+
+GO

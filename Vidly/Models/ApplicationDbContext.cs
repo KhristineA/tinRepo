@@ -14,8 +14,8 @@ namespace Vidly.Models
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Rental> Rentals { get; set; }
-        public DbSet<RentalHeader> RentalHeaders { get; set; }
-        public DbSet<RentalDetail> RentalDetails { get; set; }
+        public DbSet<Rent2Header> Rent2Headers { get; set; }
+        public DbSet<Rent2Detail> Rent2Details { get; set; }
         public DbSet<RentHeader> RentHeaders { get; set; }
         public DbSet<RentDetail> RentDetails { get; set; }
 
@@ -29,6 +29,8 @@ namespace Vidly.Models
             modelBuilder.Entity<Customer>()
                 .Property(x => x.Name)
                 .HasColumnName("CustomerName");
+            //modelBuilder.Entity<Customer>().HasRequired(c => c.MembershipType)
+            //    .WithMany().HasForeignKey(c => c.NewSampleField);
         }
 
         public ApplicationDbContext()

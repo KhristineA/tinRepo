@@ -80,6 +80,7 @@ namespace Vidly.Controllers
 
                 customerInDb.Name = customer.Name;
                 customerInDb.Birthdate = customer.Birthdate;
+                //customerInDb.NewSampleField = customer.NewSampleField;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
 
@@ -137,6 +138,7 @@ namespace Vidly.Controllers
             var data = customersQuery.Select(customer => new
             {
                 Name = customer.Name,
+                //NewSampleField = customer.MembershipType.Name,
                 MembershipTypeId = customer.MembershipType.Name,
                 Id = customer.Id
             }).ToList();

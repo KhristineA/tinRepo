@@ -9,7 +9,7 @@ namespace Vidly.Models
     public class RentalHeader
     {
         public int Id { get; set; }
-        [Required]
+        public int Customer_Id { get; set; }
         public Customer Customer { get; set; }
         public DateTime DateRented { get; set; }
         public List<RentalDetail> RentalDetails { get; set; } = new List<RentalDetail>();

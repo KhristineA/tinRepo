@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -19,27 +20,92 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        //GET /api/customers
-        public IHttpActionResult GetCustomers(string query = null)
+        ////GET /api/customers
+        //public IHttpActionResult GetCustomers(string query = null)
+        //{
+        //    var customersQuery = _context.Customers
+        //        .Include(c => c.MembershipType);
+
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //        customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+
+        //    var customerDtos = customersQuery
+        //        .ToList()
+        //        .Select(Mapper.Map<Customer, CustomerDto>);
+
+        //    return Ok(customerDtos);
+        //}
+
+        [HttpGet]
+        public IHttpActionResult GetCustomers(int page, int start, int limit)
         {
+
             var customersQuery = _context.Customers
                 .Include(c => c.MembershipType);
 
-            if (!String.IsNullOrWhiteSpace(query))
-                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+            var totalCount = customersQuery.Count();
 
-            var customerDtos = customersQuery
+            customersQuery = customersQuery.OrderBy("Id asc");
+
+            customersQuery = customersQuery.Skip((page - 1) * limit).Take(limit);
+
+            var customer = customersQuery
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
 
-            return Ok(customerDtos);
+            var item = new
+            {
+                customer,
+                totalCount
+            };
+
+            return Ok(item);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetCustomers(int page, int start, int limit, string filter)
+        {
+
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            var filterItem = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FilterItem>>(filter);
+
+            if (filterItem.First().value != string.Empty)
+            {
+                var value = filterItem.First().value.Trim();
+                customersQuery = customersQuery.Where(c => c.Name.Contains(value));
+            }
+
+            var totalCount = customersQuery.Count();
+
+            customersQuery = customersQuery.OrderBy("Id asc");
+
+            customersQuery = customersQuery.Skip((page - 1) * limit).Take(limit);
+            //customersQuery = customersQuery.Skip(start).Take(limit);
+
+            var customer = customersQuery
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
+
+            //foreach(var items in customer)
+            //{
+            //    items.Birthdate = items.Birthdate.Value.GetDateTimeFormats().FirstOrDefault();
+            //}
+
+            var item = new
+            {
+                customer,
+                totalCount
+            };
+
+            return Ok(item);
         }
 
         //GET /api/customers/1
         public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
-
             if (customer == null)
                 return NotFound();
 
@@ -50,8 +116,8 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
             _context.Customers.Add(customer);
@@ -59,23 +125,25 @@ namespace Vidly.Controllers.Api
 
             customerDto.Id = customer.Id;
 
-            return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
+            return Ok();
+            //return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
         }
 
         //PUT /api/customers/1
         [HttpPut]
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            //if (!ModelState.IsValid)
+            //    return BadRequest();
 
             var customerInDB = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customerInDB == null)
                 return NotFound();
 
-            Mapper.Map(customerDto, customerInDB);
+            customerDto.MembershipType = null;
 
+            Mapper.Map(customerDto, customerInDB);
             _context.SaveChanges();
 
             return Ok();
@@ -89,9 +157,9 @@ namespace Vidly.Controllers.Api
             if (customerInDb == null)
                 return NotFound();
 
-            var customerInRent = _context.RentDetails.Where(r => r.RentId == id && r.DateReturned == null);
-            if (customerInRent != null)
-                return BadRequest("Cannot delete - Customer has a rental record.");
+            //var customerInRent = _context.RentDetails.Where(r => r.RentId == id && r.DateReturned == null);
+            //if (customerInRent != null)
+            //    return BadRequest("Cannot delete - Customer has a rental record.");
 
             _context.Customers.Remove(customerInDb);
             _context.SaveChanges();

@@ -13,3 +13,11 @@
 GO
 CREATE INDEX [IX_RentDetails_RentId] ON [dbo].[RentDetails] ([RentId])
 
+
+GO
+
+CREATE INDEX [IX_RentDetails_Id] ON [dbo].[RentDetails] ([Id])
+
+GO
+
+CREATE INDEX [IX_RentDetails_Movie_Id] ON [dbo].[RentDetails] ([Movie_Id])

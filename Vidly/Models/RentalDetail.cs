@@ -10,6 +10,7 @@ namespace Vidly.Models
         public int Id { get; set; }
         public int RentalId { get; set; }
         public RentalHeader RentalHeader { get; set; }
+        public int Movie_Id { get; set; }
         public Movie Movie { get; set; }
         public DateTime? DateReturned { get; set; }
     }

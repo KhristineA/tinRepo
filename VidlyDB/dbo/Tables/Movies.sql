@@ -15,3 +15,7 @@ GO
 CREATE NONCLUSTERED INDEX [IX_GenreId]
     ON [dbo].[Movies]([GenreId] ASC);
 
+
+GO
+
+CREATE INDEX [IX_Movies_Id] ON [dbo].[Movies] ([Id])

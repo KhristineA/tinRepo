@@ -143,7 +143,8 @@ namespace Vidly.Controllers
             {
                 Name = movie.Name,
                 GenreId = movie.Genre.Name,
-                Id = movie.Id
+                Id = movie.Id,
+                NumberAvailable = movie.NumberAvailable
             }).ToList();
 
             return Json(new DataTablesResponse
