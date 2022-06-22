@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Vidly.Models
 {
+    //test
     public class Movie
     {
         public int Id { get; set; }
