@@ -1,0 +1,28 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|extend": "Vidly.view.GridTemplate",
+        "designer|userAlias": "vmgenre",
+        "designer|userClassName": "Genre",
+        "height": 350,
+        "title": "Genre",
+        "width": 416
+    },
+    "configAlternates": {
+        "designer|extend": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "3fa7473e-849c-46cc-bb8b-6bd237baf3ad",
+    "viewControllerInstanceId": "fafcc8d5-ab66-4266-a88e-b9d5adf609bf",
+    "viewModelInstanceId": "1d5c5266-a0f1-406d-b78b-6ef0ba6a47e3"
+}

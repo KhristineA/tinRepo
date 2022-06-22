@@ -1,0 +1,28 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|extend": "Vidly.view.GridTemplate",
+        "designer|userAlias": "vmMovie",
+        "designer|userClassName": "Movie",
+        "height": 250,
+        "title": "Movie",
+        "width": 400
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "designer|extend": "string"
+    },
+    "name": "MyWindow",
+    "designerId": "2cc4bbc9-6e5c-4533-9e2e-5353bbb03f0e",
+    "viewControllerInstanceId": "043c3137-3213-4e2a-94fd-8f4c5879742c",
+    "viewModelInstanceId": "a867a535-5b6d-4786-87b9-1dd9fb123cf1"
+}

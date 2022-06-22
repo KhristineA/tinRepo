@@ -1,0 +1,31 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "Vidly"
+        ],
+        "name": "Vidly",
+        "views": [
+            "Customer",
+            "Movie",
+            "rentalHeader",
+            "Rental",
+            "Customer1",
+            "Movie1",
+            "MembershipType",
+            "Genre"
+        ]
+    },
+    "configAlternates": {
+        "controllers": "typedarray",
+        "name": "string",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}
