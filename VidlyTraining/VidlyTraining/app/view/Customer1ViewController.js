@@ -12,7 +12,7 @@
  *
  * Do NOT hand edit this file.
  */
-
+//test
 Ext.define('Vidly.view.Customer1ViewController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.vmcustomer1',
